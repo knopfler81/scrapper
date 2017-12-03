@@ -9,13 +9,19 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @concerts.each do |concert| %>
 
-      <tr>
-        <td><%= concert.date.strftime("%a, %d %b %Y") %></td>
-        <td><%= concert.city %></td>
-      </tr>
+  <tbody>
+
+
+
+
+    <% @concerts.each do |concert| %>
+        <tr>
+          <td><%= concert.date  %></td>
+          <td><%= concert.city  %></td>
+        </tr>
+
     <% end %>
+
   </tbody>
 </table>
