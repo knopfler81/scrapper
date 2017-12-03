@@ -5,8 +5,8 @@ class ConcertMailer < ApplicationMailer
   def new_dates(concert)
      @concert = concert
       mail(
-          to:   "knopfler42@yaoo.fr"
-           subject:  " Chouette, Les MM font un concert à #{concert.city} bientôt"
+        to:   "knopfler42@yaoo.fr",
+        subject:  " Chouette, Les MM font un concert à #{concert.city} bientôt"
             )
 
   end

@@ -1,6 +1,7 @@
 class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
+
   # GET /concerts
   # GET /concerts.json
   def index
@@ -30,6 +31,7 @@ class ConcertsController < ApplicationController
       if @concert.save
         format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
         format.json { render :show, status: :created, location: @concert }
+        ConcertMailer.new_dates(@concert).deliver_now
       else
         format.html { render :new }
         format.json { render json: @concert.errors, status: :unprocessable_entity }
