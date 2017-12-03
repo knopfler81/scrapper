@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Concerts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @concerts.each do |concert| %>
+
+      <tr>
+        <td><%= concert.date.strftime("%a, %d %b %Y") %></td>
+        <td><%= concert.city %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
