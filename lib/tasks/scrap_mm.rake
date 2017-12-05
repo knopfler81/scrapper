@@ -14,7 +14,7 @@ namespace :scrap do
   task :find_concerts  => :environment do
 
     data.each do |concert|
-      c = Concert.create
+      c = Concert.new
       c.date = concert[0]
       c.city = concert[1]
       c.save
@@ -27,13 +27,12 @@ namespace :scrap do
     existing_date = Concert.all.map { |c| [c.date, c.city] }
 
     data.each do |concert|
-      c = Concert.create
+      c = Concert.new
       c.date = concert[0]
       c.city = concert[1]
       c.save unless existing_date.include?([concert[0], concert[1]])
     end
-
-    Concert.where(city: nil, date: nil).destroy_all
+      Concert.where(city: nil, date:nil).destroy_all
 
   end
 end

@@ -16,7 +16,8 @@
         <tr>
           <td><%= concert.date  %></td>
           <td><%= concert.city  %></td>
-        </tr>
+          <td><%= link_to 'show', concert_path(concert) %>
+        </tr></td>
     <% end %>
 
   </tbody>

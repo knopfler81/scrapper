@@ -1,7 +1,6 @@
 class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
-
   # GET /concerts
   # GET /concerts.json
   def index
@@ -26,12 +25,10 @@ class ConcertsController < ApplicationController
   # POST /concerts.json
   def create
     @concert = Concert.new(concert_params)
-
     respond_to do |format|
       if @concert.save
         format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
         format.json { render :show, status: :created, location: @concert }
-        ConcertMailer.new_dates(@concert).deliver_now
       else
         format.html { render :new }
         format.json { render json: @concert.errors, status: :unprocessable_entity }
@@ -71,6 +68,6 @@ class ConcertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def concert_params
-      params.fetch(:concert, {})
+      params.require(:concert).permit(:city, :date)
     end
 end
