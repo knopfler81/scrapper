@@ -2,23 +2,15 @@
 
 <h1>Concerts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
 
-  <tbody>
 
-    <% @concerts.each do |concert| %>
-        <tr>
-          <td><%= concert.date  %></td>
-          <td><%= concert.city  %></td>
-          <td><%= link_to 'show', concert_path(concert) %>
-        </tr></td>
+
+
+     <ol> <% @concerts.each do |concert| %>
+
+         <li><%= concert.date  %> <%= concert.city  %></li>
+
     <% end %>
+    </ol>
 
-  </tbody>
-</table>
