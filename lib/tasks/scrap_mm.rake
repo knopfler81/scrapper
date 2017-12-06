@@ -32,7 +32,8 @@ namespace :scrap do
       c.city = concert[1]
       c.save unless existing_date.include?([concert[0], concert[1]])
     end
-      Concert.where(city: nil, date:nil).destroy_all
+
+    Concert.where(city: nil, date:nil).destroy_all
 
   end
 end

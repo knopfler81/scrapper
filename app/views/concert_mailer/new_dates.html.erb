@@ -1,4 +1,11 @@
 
 <h2>Salut !</h2>
 
-<p>Les Mountain Men seront en concert à <%= @concert.city %> le <%= @concert.date %></p>
+<p>Nouvelles dates pour les Mountain Men</p>
+<ol>
+  <% Concert.where('created_at < ?', 1.minutes.ago ).each do |concert| %>
+  <li>
+    <%= concert.date.strftime("%A %B %Y") %> <%= concert.city %>
+  </li>
+  <% end %>
+</ol>
