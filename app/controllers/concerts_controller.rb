@@ -5,6 +5,7 @@ class ConcertsController < ApplicationController
   # GET /concerts.json
   def index
     @concerts = Concert.all
+    @concerts.order("date ASC")
   end
 
   # GET /concerts/1
@@ -25,6 +26,7 @@ class ConcertsController < ApplicationController
   # POST /concerts.json
   def create
     @concert = Concert.new(concert_params)
+    binding.pry
     respond_to do |format|
       if @concert.save
         format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
