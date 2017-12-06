@@ -4,8 +4,7 @@ class ConcertsController < ApplicationController
   # GET /concerts
   # GET /concerts.json
   def index
-    @concerts = Concert.all
-    @concerts.order("date ASC")
+    @concerts = Concert.order('date ASC')
   end
 
   # GET /concerts/1
