@@ -5,7 +5,7 @@
 <ol>
   <% Concert.where('created_at < ?', 1.minutes.ago ).each do |concert| %>
   <li>
-    <%= concert.date.strftime("%a %d %B %Y")) %> <%= concert.city %>
+    <%= concert.date.strftime("%a %d %B %Y") %> <%= concert.city %>
   </li>
   <% end %>
 </ol>
