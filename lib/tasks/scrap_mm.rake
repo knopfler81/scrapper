@@ -42,7 +42,7 @@ namespace :scrap do
   desc "Envoie email si nouvelles dates"
   task :detected_new_dates => :environment do
     new_concerts = Concert.last_found
-    ConcertMailer.new_dates(new_concerts).deliver_now
+    ConcertMailer.new_dates(new_concerts).deliver_now unless new_concerts.count  == 0
   end
 end
 
