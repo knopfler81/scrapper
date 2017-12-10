@@ -9,6 +9,14 @@ class Concert < ApplicationRecord
     self.city[/\(.*?\)/].gsub(/[()]/, "").to_i
   end
 
+  def retreive_city_name
+    self.city[/^[^\(]+/].rstrip!
+  end
+
+  def retreive_location_name
+     self.city[/\|(.*)/].gsub("|", "").strip
+  end
+
 
 
 end
