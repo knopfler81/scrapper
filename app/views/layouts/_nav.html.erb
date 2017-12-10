@@ -1,0 +1,11 @@
+<ul>
+  <% if user_signed_in? %>
+    <p>Hey <%= current_user.nickname %>!!</p>
+    <li><%= link_to "Deconnexion", destroy_user_session_path(current_user) %></li>
+    <li><%= link_to "Profile", edit_user_registration_path(current_user)  %></li>
+  <% else %>
+    <li><%= link_to "Connexion", new_user_session_path %></li>
+    <li><%= link_to "Créer un compte", new_user_registration_path %></li>
+    <li><%= link_to "Les Concerts", concerts_path %></li>
+  <% end %>
+</ul>
