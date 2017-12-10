@@ -22,11 +22,10 @@ namespace :scrap do
 
   end
 
-  desc "Mise à jour des nouvelles dates"
+  desc "Mise à jour des nouvelles dates "
   task :update_concerts  => :environment do
 
     existing_date = Concert.all.map { |c| [c.date, c.city] }
-
 
     data.each do |concert|
       c = Concert.new
@@ -37,12 +36,9 @@ namespace :scrap do
 
     Concert.where(city: nil, date:nil).destroy_all
 
-  end
-
-  desc "Envoie email si nouvelles dates"
-  task :detected_new_dates => :environment do
     new_concerts = Concert.last_found
     ConcertMailer.new_dates(new_concerts).deliver_now unless new_concerts.count  == 0
+
   end
 end
 
