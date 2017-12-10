@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   controllers: {  registrations: "registrations"}
 
 
+  resources :wanted_concerts
+
   resources :concerts
   root 'concerts#index'
 end
