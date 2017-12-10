@@ -4,13 +4,13 @@ require "date"
 require "time"
 
 namespace :scrap do
-  desc "This get MM concerts"
 
     url = "http://mountain-men.fr/concerts/"
     doc = Nokogiri::HTML(open(url))
     data = doc.search('#dateconcert table')
     data = data.css('.jaunec' ).map { |tr| tr.css('td').map(&:text) } + doc.css('.jaunef' ).map { |tr| tr.css('td').map(&:text) }
 
+  desc "Première récupération des dates"
   task :find_concerts  => :environment do
 
     data.each do |concert|
@@ -22,9 +22,11 @@ namespace :scrap do
 
   end
 
+  desc "Mise à jour des nouvelles dates"
   task :update_concerts  => :environment do
 
     existing_date = Concert.all.map { |c| [c.date, c.city] }
+
 
     data.each do |concert|
       c = Concert.new
@@ -35,6 +37,12 @@ namespace :scrap do
 
     Concert.where(city: nil, date:nil).destroy_all
 
+  end
+
+  desc "Envoie email si nouvelles dates"
+  task :detected_new_dates => :environment do
+    new_concerts = Concert.last_found
+    ConcertMailer.new_dates(new_concerts).deliver_now
   end
 end
 

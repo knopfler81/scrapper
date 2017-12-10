@@ -1,12 +1,6 @@
 
 class Concert < ApplicationRecord
-  after_create :send_notification
 
-  def send_notification
-    ConcertMailer.new_dates(self).deliver_now
-  end
+  scope :last_found, -> { where("concerts.created_at >= ?", 5.minutes.ago )}
 
-  def group_new_concerts
-    Concert.where('created_at < ?', 1.minute.ago )
-  end
 end
