@@ -3,11 +3,11 @@ class WantedConcert < ApplicationRecord
   validates :department, presence: true
 
 
-  def matching_concerts
-    Concert.all.each do |concert|
-      if self.department == concert.retreive_department
-        WantedConcertMailer.matching_locations(self).deliver_now
-      end
-    end
-  end
+  # def matching_concerts
+  #   Concert.all.each do |concert|
+  #     if self.department == concert.department
+  #       WantedConcertMailer.matching_locations(concert).deliver_now
+  #     end
+  #   end
+  # end
 end

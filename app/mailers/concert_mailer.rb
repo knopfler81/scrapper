@@ -9,4 +9,12 @@ class ConcertMailer < ApplicationMailer
          subject:  "Des nouvelles dates pour les Mountain Men"
         )
   end
+
+
+    # def matching_locations(wanted_concerts)
+    #   @wanted_concerts = WantedConcert.all
+    #   mail( to:   "knopfler42@yahoo.fr",
+    #        subject:  "Ils arrivent vers chez toi !"
+    #       )
+    # end
 end

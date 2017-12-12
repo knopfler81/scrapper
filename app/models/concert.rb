@@ -17,6 +17,11 @@ class Concert < ApplicationRecord
      self.city[/\|(.*)/].gsub("|", "").strip
   end
 
-
-
+  # def matching_concerts
+  #   WantedConcert.each do |wanted|
+  #     if wanted.department == self.department
+  #       ConcertMailer.matching_locations(wanted).deliver_now
+  #     end
+  #   end
+  # end
 end
