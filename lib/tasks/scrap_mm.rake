@@ -37,6 +37,8 @@ namespace :scrap do
     Concert.where(city: nil, date:nil).destroy_all
 
     new_concerts = Concert.last_found
+
+    WantedConcert.all.map { |wanted| wanted.matching_concerts } unless WantedConcert.count == 0
     ConcertMailer.new_dates(new_concerts).deliver_now unless new_concerts.count  == 0
 
   end

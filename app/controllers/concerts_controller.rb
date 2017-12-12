@@ -25,7 +25,6 @@ class ConcertsController < ApplicationController
   # POST /concerts.json
   def create
     @concert = Concert.new(concert_params)
-    binding.pry
     respond_to do |format|
       if @concert.save
         format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
