@@ -5,15 +5,15 @@ class Concert < ApplicationRecord
   scope :last_found, -> { where("concerts.created_at >= ?", 5.minutes.ago )}
 
 
-  def retreive_department
+  def department
     self.city[/\(.*?\)/].gsub(/[()]/, "").to_i
   end
 
-  def retreive_city_name
+  def city_name
     self.city[/^[^\(]+/].rstrip!
   end
 
-  def retreive_location_name
+  def location_name
      self.city[/\|(.*)/].gsub("|", "").strip
   end
 
