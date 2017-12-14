@@ -36,11 +36,24 @@ namespace :scrap do
 
     Concert.where(city: nil, date:nil).destroy_all
 
-    new_concerts = Concert.last_found
-    #WantedConcert.all.map { |wanted| wanted.matching_concerts } unless WantedConcert.count == 0
+  new_concerts = Concert.last_found
+  # puts new_concerts.map {|c| c.city_name }
 
-    ConcertMailer.new_dates(new_concerts).deliver_now unless new_concerts.count  == 0
+  ConcertMailer.new_dates(new_concerts).deliver_now unless new_concerts.count  == 0
 
+  puts WantedConcert.pluck(:department)
+  puts "*" * 10
+
+   new_concerts.each do |concert|
+    if WantedConcert.pluck(:department).include?(concert.department)
+      puts "#" * 10
+      puts concert.city_name
+      puts concert.department
+   #matching_concerts = Concert.last_match
+     ConcertMailer.matching_locations(concert).deliver_now #unless new_concerts.count  == 0
+     end
+   end
   end
+
 end
 

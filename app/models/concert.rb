@@ -2,7 +2,8 @@
 class Concert < ApplicationRecord
 
 
-  scope :last_found, -> { where("concerts.created_at >= ?", 5.minutes.ago )}
+  scope :last_found, -> { where("concerts.created_at >= ?", 1.seconds.ago ) }
+  #scope :last_match, -> { joins(WantedConcert.where("department =?",) }
 
 
   def department
@@ -14,14 +15,8 @@ class Concert < ApplicationRecord
   end
 
   def location_name
-     self.city[/\|(.*)/].gsub("|", "").strip
+    self.city[/\|(.*)/].gsub("|", "").strip
   end
 
-  # def matching_concerts
-  #   WantedConcert.each do |wanted|
-  #     if wanted.department == self.department
-  #       ConcertMailer.matching_locations(wanted).deliver_now
-  #     end
-  #   end
-  # end
 end
+

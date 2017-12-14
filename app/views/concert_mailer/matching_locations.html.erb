@@ -1,8 +1,12 @@
 <h2>Salut !</h2>
 
-<p>Les Mountain Men arrivent:
+<p>Les Mountain Men arrivent:</p>
 
-<% @wanted_concerts.each do |wanted | %>
- <%= wanted.department %>
- <% end %>
 
+<% @concerts.each do |concert| %>
+  <%= concert.city_name %>
+  <br>
+  <%= concert.department %>
+  <p>-------------------------</p>
+
+<% end %>
