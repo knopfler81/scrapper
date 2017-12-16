@@ -2,10 +2,9 @@ class ConcertMailer < ApplicationMailer
 
   default from: "concert@mountain-men.fr"
 
-  def new_dates(concerts)
+  def new_dates(concerts, users)
     @concerts = Concert.last_found
-    @users = User.all
-    mail( to:   @users.each { |user| user.email },
+    mail( to:  users.pluck[:email] ,
          subject:  "Des nouvelles dates pour les Mountain Men"
         )
   end
