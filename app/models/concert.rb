@@ -1,10 +1,7 @@
 
 class Concert < ApplicationRecord
 
-
-  scope :last_found, -> { where("concerts.created_at >= ?", 1.seconds.ago ) }
-  #scope :last_match, -> { joins(WantedConcert.where("department =?",) }
-
+  scope :last_found, -> { where("concerts.created_at >= ?", 1.second.ago ) }
 
   def department
     self.city[/\(.*?\)/].gsub(/[()]/, "").to_i
