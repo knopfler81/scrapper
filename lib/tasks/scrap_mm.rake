@@ -5,10 +5,10 @@ require "time"
 
 namespace :scrap do
 
-    url = "http://mountain-men.fr/concerts/"
-    doc = Nokogiri::HTML(open(url))
-    data = doc.search('#dateconcert table')
-    data = data.css('.jaunec' ).map { |tr| tr.css('td').map(&:text) } + doc.css('.jaunef' ).map { |tr| tr.css('td').map(&:text) }
+  url = "http://mountain-men.fr/concerts/"
+  doc = Nokogiri::HTML(open(url))
+  data = doc.search('#dateconcert table')
+  data = data.css('.jaunec' ).map { |tr| tr.css('td').map(&:text) } + doc.css('.jaunef' ).map { |tr| tr.css('td').map(&:text) }
 
   desc "Première récupération des dates"
   task :find_concerts  => :environment do
@@ -19,7 +19,6 @@ namespace :scrap do
       c.city = concert[1]
       c.save
     end
-
   end
 
   desc "Mise à jour des nouvelles dates "
@@ -38,8 +37,25 @@ namespace :scrap do
 
     new_concerts = Concert.last_found
 
-    WantedConcert.all.map { |wanted| wanted.matching_concerts } unless WantedConcert.count == 0
     ConcertMailer.new_dates(new_concerts).deliver_now unless new_concerts.count  == 0
+
+    # puts "Wanted"
+    # puts WantedConcert.pluck(:department)
+    # puts "*" * 10
+
+    # puts "new_concert"
+    # new_concerts.find_each {|n| puts n.department }
+    # puts "*" * 10
+
+  new_concerts.each do |concert|
+    User.find_each do |user|
+      user.wanted_concerts.find_each do |wanted|
+        if wanted.department == concert.department
+          WantedConcertMailer.matching_locations(wanted).deliver_now
+        end
+      end
+    end
+  end
 
   end
 end

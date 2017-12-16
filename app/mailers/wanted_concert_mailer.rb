@@ -1,9 +1,9 @@
 class WantedConcertMailer < ApplicationMailer
 
-  default from: "concert@mountain-men.fr"
+default from: "concert@mountain-men.fr"
 
-  def matching_locations(wanted_concerts)
-    @wanted_concerts = WantedConcert.all
+  def matching_locations(wanted)
+
     mail( to:   "knopfler42@yahoo.fr",
          subject:  "Ils arrivent vers chez toi !"
         )
