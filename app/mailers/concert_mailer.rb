@@ -6,7 +6,7 @@ class ConcertMailer < ApplicationMailer
   def new_dates(concerts)
     @concerts = Concert.last_found
 
-    mail( to:  USERS.find_each { |u| u.email },
+    mail( to:  USERS.pluck(:email),
          subject:  "Des nouvelles dates pour les Mountain Men"
         )
   end
