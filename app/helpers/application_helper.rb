@@ -21,6 +21,8 @@ module ApplicationHelper
     "18" => "Cher",
     "19" => "Corrèze",
     "20" => "Corse",
+    "2a"=> "Corse-du-Sud",
+    "2b" => "Haute-Corse",
     "21" => "Côte d'Or",
     "22" => "Côtes d'Armor",
     "23" => "Creuse",
