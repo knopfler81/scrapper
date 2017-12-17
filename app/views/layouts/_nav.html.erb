@@ -1,13 +1,22 @@
-<ul>
-  <% if user_signed_in? %>
-    <p>Hey <%= current_user.nickname %>!!</p>
-    <li><%= link_to "Deconnexion", destroy_user_session_path, method: :delete %></li>
-    <li><%= link_to "Profile", edit_user_registration_path(current_user)  %></li>
-    <li><%= link_to "Souhaits", wanted_concerts_path %></li>
-    <li><%= link_to "Créer un souhait", new_wanted_concert_path %> </li>
-  <% else %>
-    <li><%= link_to "Connexion", new_user_session_path %></li>
-    <li><%= link_to "Créer un compte", new_user_registration_path %></li>
-    <li><%= link_to "Les Concerts", concerts_path %></li>
-  <% end %>
-</ul>
+<nav class="navbar navbar-fixed-top navbar">
+  <div class="container">
+    <%= link_to "Concerts", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+       <ul>
+         <% if user_signed_in? %>
+           <h5>Hey <%= current_user.nickname %>!!</h5>
+           <li><%= link_to "Deconnexion", destroy_user_session_path, method: :delete %></li>
+           <li><%= link_to "EditProfile", edit_user_registration_path(current_user)  %></li>
+           <li><%= link_to "Souhaits", wanted_concerts_path %></li>
+           <li><%= link_to "Créer un souhait", new_wanted_concert_path %> </li>
+         <% else %>
+           <li><%= link_to "Connexion", new_user_session_path %></li>
+           <li><%= link_to "Créer un compte", new_user_registration_path %></li>
+           <li><%= link_to "Les Concerts", concerts_path %></li>
+         <% end %>
+       </ul>
+      </ul>
+    </nav>
+  </div>
+</nav>
