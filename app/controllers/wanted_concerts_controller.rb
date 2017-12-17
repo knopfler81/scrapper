@@ -3,7 +3,7 @@ class WantedConcertsController < ApplicationController
   before_action  :find_wanted_concert, only: :destroy
 
   def index
-    @wanted_concerts = WantedConcert.all
+    @wanted_concerts = WantedConcert.where("user_id =?", current_user.id)
   end
 
   def new
