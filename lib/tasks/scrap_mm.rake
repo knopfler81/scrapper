@@ -47,15 +47,17 @@ namespace :scrap do
     # new_concerts.find_each {|n| puts n.department }
     # puts "*" * 10
 
-  new_concerts.each do |concert|
-    User.find_each do |user|
-      user.wanted_concerts.find_each do |wanted|
-        if wanted.department == concert.department
-          WantedConcertMailer.matching_locations(wanted).deliver_now
+    new_concerts.each do |concert|
+      User.find_each do |user|
+        user.wanted_concerts.find_each do |wanted|
+          ApplicationHelper::DEPARTMENTS.each do |k, v|
+            if (wanted.department == v) && (concert.department.to_s == k)
+              WantedConcertMailer.matching_locations(wanted).deliver_now
+            end
+          end
         end
       end
     end
-  end
 
   end
 end

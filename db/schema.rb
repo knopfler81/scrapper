@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171210203403) do
   end
 
   create_table "wanted_concerts", force: :cascade do |t|
-    t.integer  "department"
+    t.string   "department"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
