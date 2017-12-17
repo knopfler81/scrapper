@@ -1,6 +1,12 @@
+<div class="row">
+  <div class=" col-md-8 col-md-offset-2 ">
 
-<%= simple_form_for(@wanted_concert) do |f| %>
-    <%= f.input :department, collection: ApplicationHelper::DEPARTMENTS.map { |k, v| v } %>
-    <%= f.submit %>
-<% end %>
+    <h2>Où aimerais-tu voir les Mountain Men?</h2>
+    <%= simple_form_for(@wanted_concert) do |f| %>
+        <%= f.input :department, prompt: "Choisi une région", label: false, collection: ApplicationHelper::DEPARTMENTS.map { |k, v| v } %>
+        <%= f.submit "Valider", class: "btn btn-success" %>
+    <% end %>
+
+  </div>
+</div>
 
