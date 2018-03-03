@@ -2,10 +2,13 @@
 <h2>Salut !</h2>
 
 <p>Nouvelles dates pour les Mountain Men</p>
-<ol>
-  <% Concert.last_found.each do |concert| %>
-  <li>
-    <%= concert.date.strftime("%a %d %B %Y") %> <%= concert.city %>
-  </li>
+
+<ul>
+  <% @concerts.last_found.each do |concert| %>
+
+
+    <li><%= concert.date_day %> <%= concert.date_month %> <%= concert.date_year %> | <%= concert.city_name %> | <%= concert.department %> | <%= concert.location_name %></li>
+
   <% end %>
-</ol>
+</ul>
+

@@ -1,11 +1,12 @@
 <h1>Concerts</h1>
 
 
-<ol>
+<ul>
   <% @concerts.each do |concert| %>
 
-    <li><%= concert.date.strftime("%a %d %B %Y") %> | <%= concert.city_name %> | <%= concert.department %> | <%= concert.location_name %></li>
+
+    <li><%= concert.date_day %> <%= concert.date_month %> <%= concert.date_year %> | <%= concert.city_name %> | <%= concert.department %> | <%= concert.location_name %></li>
 
   <% end %>
-</ol>
+</ul>
 
