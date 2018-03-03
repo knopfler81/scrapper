@@ -5,7 +5,7 @@
   <% @concerts.each do |concert| %>
 
 
-    <li><%= concert.date_day %> <%= concert.date_month %> <%= concert.date_year %> | <%= concert.city_name %> | <%= concert.department %> | <%= concert.location_name %></li>
+    <li><%= concert.date  %> | <%= concert.city_name %> | <%= concert.department %> | <%= concert.location_name %></li>
 
   <% end %>
 </ul>
