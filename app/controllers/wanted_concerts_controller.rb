@@ -23,7 +23,7 @@ class WantedConcertsController < ApplicationController
   def destroy
     @wanted_concert.destroy
     respond_to do |format|
-      format.html { redirect_to wanted_concerts_url, notice: 'Ton souhait é bien été suprimé' }
+      format.html { redirect_to wanted_concerts_url, notice: 'Ton souhait a bien été supprimé' }
     end
   end
 
